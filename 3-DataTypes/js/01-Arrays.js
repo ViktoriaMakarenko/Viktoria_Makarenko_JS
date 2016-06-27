@@ -1,6 +1,8 @@
 //first task about arrays
 
 var myArray = [],
+	helpArray = [],
+	resultArray = [],
 	n = 20,
 	i,
 	j;
@@ -22,17 +24,17 @@ function testComparingOfCharArrays(){
 	console.log(comparingOfCharArrays(['',''],['a','s','d','f']));// Elements mustn't be empty.
 	console.log(comparingOfCharArrays([],['a','s','d','f']));//One of arrays is empty.
 	console.log(comparingOfCharArrays([],[]));//One of arrays is empty.
-	console.log(comparingOfCharArrays('asfd',[]));//Input data shoul be 2 arrays.element.
-	console.log(comparingOfCharArrays('asfd','asfd'));//Input data shoul be 2 arrays.
-	console.log(comparingOfCharArrays());//Input data shoul be 2 arrays.
-	console.log(comparingOfCharArrays('',[]));//Input data shoul be 2 arrays.
+	console.log(comparingOfCharArrays('asfd',[]));//Input data should be 2 arrays.element.
+	console.log(comparingOfCharArrays('asfd','asfd'));//Input data should be 2 arrays.
+	console.log(comparingOfCharArrays());//Input data should be 2 arrays.
+	console.log(comparingOfCharArrays('',[]));//Input data should be 2 arrays.
 };
 
 testComparingOfCharArrays();
 
 function comparingOfCharArrays(arr1, arr2){
 	if (!arr1 || !arr2 || (typeof arr1 !== 'object') || (typeof arr2 !== 'object')) {
-        console.log("Input data shoul be 2 arrays.");
+        console.log("Input data should be 2 arrays.");
         return null;
     }
 	
@@ -95,3 +97,116 @@ function areArraysElementsChars(arr){
 }
 
 //third task about arrays
+
+function testsfindMaximalSequenceOfEqualElements (){
+	console.log(findMaximalSequenceOfEqualElements([2, 1, 1, 2, 3, 3, 2,  2, 1]));//Length of sequences 1,1;3,3;2,2 is  equal.
+	console.log(findMaximalSequenceOfEqualElements([2, 1, 1, 2, 3, 3, 2,  2, 2, 1]));//2,2,2
+	console.log(findMaximalSequenceOfEqualElements([]));//The array is empty.
+	console.log(findMaximalSequenceOfEqualElements([5]));//The array must have more than 1 element.
+	console.log(findMaximalSequenceOfEqualElements());//No input data
+	console.log(findMaximalSequenceOfEqualElements('fr'));//Input data should be array.
+}
+
+testsfindMaximalSequenceOfEqualElements();
+
+function findMaximalSequenceOfEqualElements(arr){
+	if (!arr){
+		console.log('No input data');
+		return null;
+	}
+	if (typeof arr != 'object'){
+		console.log('Input data should be array.');
+		return null;
+	}
+	if (arr.length == 0){
+		console.log('The array is empty.');
+		return null;
+	}
+	if (arr.length == 1){
+		console.log('The array must have more than 1 element.');
+		return null;
+	}
+	j = 0;
+	for (i = 1; i <= (arr.length - 1); i++){
+		if (arr[i] === arr[i-1]){
+			var firstOccurance = i - 1;
+			if (i == (arr.length - 1)){
+				var lastOccurance = i;
+			}
+			while (arr[i+1] === arr[i]){
+				i++;
+			}
+			lastOccurance = i + 1;
+		helpArray[j] = arr.slice(firstOccurance,lastOccurance);
+		j++;
+		}
+	}
+	for (k = 1; k <= (helpArray.length - 1); k++){
+		if (helpArray[k].length >= helpArray[k - 1].length){
+			resultArray = helpArray[k];
+		}
+		if (helpArray[k].length < helpArray[k - 1].length){
+			resultArray = helpArray[k - 1];
+		}
+		if (helpArray[k].length == helpArray[k - 1].length){
+			resultArray = "Length of sequences " + helpArray.join(';') + ' is  equal.';
+		}
+	}
+	return resultArray;
+}
+
+//fourth task about arrays
+
+function testsfindMaximalIncreasingSequence(){
+	console.log(findMaximalIncreasingSequence([3, 2, 3, 4, 2, 2, 4]));//[2, 3, 4]
+	console.log(findMaximalIncreasingSequence([15, 2, 3, 4, 2, 2, 4]));//[2, 3, 4, 15]
+	console.log(findMaximalIncreasingSequence([3, 15, 3, 4, 20, 20, 4]));//[3, 4, 15, 20]
+	console.log(findMaximalIncreasingSequence([10]));//[10]
+	console.log(findMaximalIncreasingSequence([]));//The array is empty.
+	console.log(findMaximalIncreasingSequence());//No input data
+	console.log(findMaximalIncreasingSequence('fr'));//Input data should be array.
+};
+
+testsfindMaximalIncreasingSequence();
+
+function findMaximalIncreasingSequence(arr){
+	if (!arr){
+		console.log('No input data');
+		return null;
+	}
+	if (typeof arr != 'object'){
+		console.log('Input data should be array.');
+		return null;
+	}
+	if (arr.length == 0){
+		console.log('The array is empty.');
+		return null;
+	}
+	if (arr.length == 1){
+		return arr;
+	}
+	j = 0;
+	helpArray = arr;
+	for (i = 0; i <= (helpArray.length - 1); i++){
+		for (j = i + 1; j <= (helpArray.length - 1); j++){
+			if (arr[i] === arr[j]){
+				helpArray.splice(j,1);
+				j--;
+			}
+		}
+	}
+	for (i = 0; i <= (helpArray.length - 1); i++){
+		var min = helpArray[i];
+		var minIndex = i;
+		for (j = i +1; j <= (helpArray.length - 1); j++){
+			if (helpArray[j] < min){
+				min = helpArray[j];
+				minIndex = j;
+			}
+		}
+		var x = helpArray[i];
+		helpArray[i] = min;
+		helpArray[minIndex] = x;
+	}
+	return helpArray;
+}
