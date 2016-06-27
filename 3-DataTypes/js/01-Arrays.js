@@ -30,7 +30,9 @@ function testComparingOfCharArrays(){
 	console.log(comparingOfCharArrays('',[]));//Input data should be 2 arrays.
 };
 
-testComparingOfCharArrays();
+//testComparingOfCharArrays();
+
+console.log(comparingOfCharArrays(['a','s','d','f','a','d','d'],['b','d','d','f','f']));
 
 function comparingOfCharArrays(arr1, arr2){
 	if (!arr1 || !arr2 || (typeof arr1 !== 'object') || (typeof arr2 !== 'object')) {
@@ -107,7 +109,9 @@ function testsfindMaximalSequenceOfEqualElements (){
 	console.log(findMaximalSequenceOfEqualElements('fr'));//Input data should be array.
 }
 
-testsfindMaximalSequenceOfEqualElements();
+//testsfindMaximalSequenceOfEqualElements();
+
+console.log(findMaximalSequenceOfEqualElements([2, 1, 1, 2, 3, 3, 2,  2, 2, 1]));
 
 function findMaximalSequenceOfEqualElements(arr){
 	if (!arr){
@@ -167,7 +171,9 @@ function testsfindMaximalIncreasingSequence(){
 	console.log(findMaximalIncreasingSequence('fr'));//Input data should be array.
 };
 
-testsfindMaximalIncreasingSequence();
+//testsfindMaximalIncreasingSequence();
+
+console.log(findMaximalIncreasingSequence([3, 2, 3, 4, 2, 2, 4]));
 
 function findMaximalIncreasingSequence(arr){
 	if (!arr){
