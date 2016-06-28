@@ -38,33 +38,120 @@ if (((length1 + length2) > length3) && ((length1 + length3) > length2) && ((leng
 }
 
 //second task
-function Arr(arr) {
-	this.arr = arr;
-};
 
-Arr.prototype.delSomeElement = function() {
+Array.prototype.delSomeElement = function(x) {
 	i = 0;
-	x = 1;
-	while ( i  <= (this.arr.length - 1)){
-		if (this.arr[i] === x){
-			delete this.arr[i];
+	while ( i  <= (this.length - 1)){
+		if (this[i] === x){
+			delete this[i];
 		}
 		i++;
 	}
-	return this.arr;
+	return this;
 };
 
-var myArray = new Arr([1, 2, 1, 4, 1, 3, 4, 1, 111, 3, 2, 1, "1"]);
+var myArray = [1, 2, 1, 4, 1, 3, 4, 1, 111, 3, 2, 1, "1"];
 
-console.log(myArray.delSomeElement());
+console.log(myArray.delSomeElement(1));
 
 //third task
 
 var myObject = {firstName : "Olga", lastName: {beforeWedding : 'Petrova', afterWedding : 'Sidorova'}, age: 32};
 
-var copy = myObject;
+function cloneObject(obj) {  
+    var newObj = {};  
+    for (var prop in obj) {  
+        if (typeof obj[prop] == 'object') {  
+          newObj[prop] = cloneObject(obj[prop]);  
+        } else {
+          newObj[prop] = obj[prop];
+        }
+    } 
+    return newObj;  
+}
+
+var copy = cloneObject(myObject);
 console.log(copy);
 
+/*myObject['firstName'] = 'Helen';
+myObject['lastName']['beforeWedding'] = 'Kozlova';
+console.log(myObject);
+console.log(copy);*/
+
+//fourth task
+
+var persons = [
+     { firstName : "Gosho", lastName: "Petrov", age: 32 },
+     { firstName : "Bay", lastName: "Ivan", age: 80 },
+     { firstName : "Petia", lastName: "Ivanov", age: 18 },
+	 { firstName : "Helen", lastName: "Kozlova", age: 35 },
+	 { firstName : "Olga", lastName: "Petrova", age: 40 }
+   ];
+   
+var min = persons[0]['age'],
+	indexOfYoungerPerson = 0,
+	youngerPersons = [],
+	j = 0; 
+function searchTheYoungestPerson(){
+	for (i = 1; i <= (persons.length - 1); i++){
+		if (persons[i]['age'] == min){
+			youngerPersons[j] = cloneObject(persons[indexOfYoungerPerson]);
+			j += 1;
+			youngerPersons[j] = persons[i];
+			j++;
+		}
+		if (persons[i]['age'] < min){
+			min = persons[i]['age'];
+			indexOfYoungerPerson = i; 
+		}
+	}
+	if (youngerPersons.length > 0){
+		result = 'The youngest persons are '; 
+		for (i = 0; i <= (youngerPersons.length - 1); i++){
+			for (var key in youngerPersons[i]){
+				result += youngerPersons[i][key] + ' ';
+			}
+			result += '; ';
+		}
+		result.trim();
+	} else {
+		result = 'The youngest person is '; 
+		for (var key in persons[indexOfYoungerPerson]){
+				result += persons[indexOfYoungerPerson][key] + ' ';
+			}
+		persons[indexOfYoungerPerson] + '.';
+	}
+	return result;
 	
-	
+}
+
+console.log(searchTheYoungestPerson());
+
+//fives task
+
+var persons = [
+    { firstName : "Gosho", lastName: "Ivanov", age: 32 },
+    { firstName : "Petia", lastName: "Ivan", age: 80 },
+    { firstName : "Petia", lastName: "Ivanov", age: 32 },
+	{ firstName : "Helen", lastName: "Kozlova", age: 80 },
+	{ firstName : "Olga", lastName: "Petrova", age: 40 }
+   ];
+
+function groupsByProperty(persons,prop){
+	var resultObject = {};
+	for (var i = 0; i < persons.length; i++){
+		var groupName = persons[i][prop];
+		if (!resultObject.hasOwnProperty(groupName)) {
+			resultObject[groupName] = [];
+		}
+		resultObject[groupName].push(persons[i]);
+	}
+	return resultObject;
+}
+
+console.log(groupsByProperty(persons,'age'));
+
+ 
+
+
 

@@ -7,11 +7,8 @@ function reverseString(str){
 }
 
 //second task
-console.log(checkBrackets('((a+b)/(5-d)'));
+console.log(checkBrackets('((a+b)/(5-d))'));
 function checkBrackets(expression){
-	if (expression.indexOf(')') < expression.indexOf('(')){
-		return 'The brackets are put incorrectly.';
-	}
 	var arr = expression.split('');
 	var i = 0,
 		count1 = 0,
@@ -53,3 +50,13 @@ function findWordInTheText(some, someText){
 }
 
 //fourth task
+
+//fives task
+console.log(changeUnbreakingWhiteSpaces('We are liv<b>in</b>g **in** an yellow submar<b>in</b>e. We don\'t\u00A0have anyth<b>in</b>g else. **In**side the submar<b>in</b>e is\u00A0very tight. So we are\u00A0dr<b>in</b>k<b>in</b>g all\u00A0the day. We will move out of it **in** 5 days.'));
+
+function changeUnbreakingWhiteSpaces(str){
+	return str.replace('\u00A0','&nbsp;');
+}
+//six task
+
+//seven task
