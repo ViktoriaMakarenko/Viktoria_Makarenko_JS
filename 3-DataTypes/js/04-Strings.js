@@ -52,7 +52,8 @@ function findWordInTheText(some, someText){
 //fourth task
 
 //fives task
-console.log(changeUnbreakingWhiteSpaces('We are liv<b>in</b>g **in** an yellow submar<b>in</b>e. We don\'t\u00A0have anyth<b>in</b>g else. **In**side the submar<b>in</b>e is\u00A0very tight. So we are\u00A0dr<b>in</b>k<b>in</b>g all\u00A0the day. We will move out of it **in** 5 days.'));
+console.log(changeUnbreakingWhiteSpaces('There are some white spaces \'\u00A0\'.'));
+document.write('There are some white spaces \'\u00A0\'.');
 
 function changeUnbreakingWhiteSpaces(str){
 	return str.replace('\u00A0','&nbsp;');
@@ -60,3 +61,17 @@ function changeUnbreakingWhiteSpaces(str){
 //six task
 
 //seven task
+console.log(parsesUrlAddress('http://www.tut.by/forum/index.php'));
+
+function parsesUrlAddress(url){
+	var result = {};
+	var arr = url.split('://');
+	console.log(arr);
+	result['protocol'] = arr[0];
+	arr2 = arr[1].split('/');
+	result['server'] = arr2[0];
+	var number = arr[1].indexOf('/');
+	result['resource'] = arr[1].slice(number);
+	return result;
+}
+
