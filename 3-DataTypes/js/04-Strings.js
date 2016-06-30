@@ -51,6 +51,59 @@ function findWordInTheText(some, someText){
 
 //fourth task
 
+console.log(changeTheTextInAllRegions('We are <mixcase>living</mixcase> in a <upcase>yellow submarine</upcase>. We <mixcase>don\'t</mixcase> have <lowcase>anything</lowcase> else.'));
+
+function changeTheTextInAllRegions(anyText){
+	var result = changeTheText(anyText, '<upcase>', '</upcase>');
+	result = changeTheText(result, '<lowcase>', '</lowcase>');
+	result = changeTheText(result, '<mixcase>', '</mixcase>');
+	return result;
+}
+function changeTheText(anyText, startText, finishText){
+	var i = 0,
+		result = anyText;
+		while (true) {
+			i = anyText.indexOf(startText, i);
+			if (i == -1) break;
+			var start = i + startText.length;
+			var finish = anyText.indexOf(finishText, i);
+			i++,
+			t = anyText.substring(start,finish);
+			switch (startText){
+				case ('<upcase>'): {
+					result = result.replace(t,t.toUpperCase());
+					break;
+				}
+				case ('<lowcase>') : {
+					result = result.replace(t,t.toLowerCase());
+					break;
+				}
+				case ('<mixcase>') : {
+					result = result.replace(t,mixCase(t));
+					break;
+				}
+			}
+			
+			result = result.replace(startText,'');
+			result = result.replace(finishText,'');
+		}
+	return result;
+}
+console.log(mixCase('ghbdthfhfujhfgjdn'));
+function mixCase(someText) {
+	result = someText;
+	var arr = someText.split(''),
+		variants = ['lower','upper'];
+	for (var i = 0; i < arr.length; i++){
+		var letter = Math.floor(Math.random() * variants.length);
+		if (letter === 1){
+			result = result.replace(arr[i],arr[i].toLowerCase());
+		} else {
+			result = result.replace(arr[i],arr[i].toUpperCase());
+		}
+	}
+	return result;
+}
 //fives task
 console.log(changeUnbreakingWhiteSpaces('There are some white spaces \'\u00A0\'.'));
 document.write('There are some white spaces \'\u00A0\'.');
