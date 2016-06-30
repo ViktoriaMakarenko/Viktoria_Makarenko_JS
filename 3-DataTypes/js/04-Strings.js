@@ -1,5 +1,7 @@
 //first task
+
 console.log(reverseString('sample'));
+
 function reverseString(str){
 	if (typeof str != 'undefined'){
 		return str.toString().split('').reverse().join('');
@@ -7,7 +9,9 @@ function reverseString(str){
 }
 
 //second task
+
 console.log(checkBrackets('((a+b)/(5-d))'));
+
 function checkBrackets(expression){
 	var arr = expression.split('');
 	var i = 0,
@@ -33,6 +37,7 @@ function checkBrackets(expression){
 }
 
 //third task
+
 console.log(findWordInTheText('in','We are liv<b>in</b>g **in** an yellow submar<b>in</b>e. We don\'t have anyth<b>in</b>g else. **In**side the submar<b>in</b>e is very tight. So we are dr<b>in</b>k<b>in</b>g all the day. We will move out of it **in** 5 days.'));
  
 function findWordInTheText(some, someText){
@@ -89,7 +94,7 @@ function changeTheText(anyText, startText, finishText){
 		}
 	return result;
 }
-console.log(mixCase('ghbdthfhfujhfgjdn'));
+
 function mixCase(someText) {
 	result = someText;
 	var arr = someText.split(''),
@@ -104,16 +109,28 @@ function mixCase(someText) {
 	}
 	return result;
 }
+
 //fives task
+
 console.log(changeUnbreakingWhiteSpaces('There are some white spaces \'\u00A0\'.'));
 document.write('There are some white spaces \'\u00A0\'.');
 
 function changeUnbreakingWhiteSpaces(str){
 	return str.replace('\u00A0','&nbsp;');
 }
+
 //six task
 
+console.log(getTextFromHtml());
+
+function getTextFromHtml(){
+	var body = document.body;
+	var textContent = body.textContent || body.innerText;
+	return textContent;
+}
+
 //seven task
+
 console.log(parsesUrlAddress('http://www.tut.by/forum/index.php'));
 
 function parsesUrlAddress(url){
