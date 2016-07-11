@@ -26,7 +26,11 @@ function conc(){
 
 //second task
 
-//console.log(comp(1,1));//on this step function comp is not defined yet
+try {
+	console.log(comp(1,1));
+} catch (err){
+	console.log('At this step function \'comp\' is not defined yet');
+}
 
 var comp = function (){
 	if (arguments.length === 2){
@@ -96,3 +100,74 @@ console.log((function conc(){
 		return null;
 	}
 })(4,7));
+
+//six task
+
+var getSubstringFromParameters = function(){
+	if (arguments.length > 0){
+		var result = [];
+			indexStart = -1,
+			indexEnd = -1;
+		for(var i = 0; i < arguments.length; i++) {
+			var indexStart = -1,
+				indexEnd = -1;
+			while (((indexStart = arguments[i].indexOf(':', indexStart + 1)) != -1) && ((indexEnd = arguments[i].indexOf('.', indexStart)) != -1)) {
+				result.push(arguments[i].slice((indexStart + 1), indexEnd).trim());
+				indexStart = indexEnd;
+			}
+		}
+		return result;
+	} else {
+		console.log('Function shoud have at least one input argument');
+		return null;
+	}
+}
+
+console.log(getSubstringFromParameters('This is the first sentence. This is a sentence with a list of items: cherries, oranges, apples, bananas.','This is the second sentence. This is a sentence with a list of items: red, blue, yellow, black.'));
+
+//seven task
+
+var getIndexOfSubstring = function(){
+	if (arguments.length > 0){
+		if (arguments.length === 1){
+			return 0;
+		} else {
+			return arguments[0].indexOf(arguments[1]);
+		}
+	}	
+}
+
+function testsOfGetIndexOfSubstring(){
+	console.log(getIndexOfSubstring('abc','b'));//1
+	console.log(getIndexOfSubstring('abc'));//0
+	console.log(getIndexOfSubstring('abc','d'));//-1
+	console.log(getIndexOfSubstring('abc','a','b'));//0
+};
+ 
+testsOfGetIndexOfSubstring();
+
+//eight task
+
+str = function(){
+	if (str.isNonEmptyStr(arguments[0]) === true){
+		alert('String is non empty');
+	} else {
+		alert('String is empty');
+	}
+}
+
+str.isNonEmptyStr = function (){
+	if (arguments[0] && (typeof arguments[0] === 'string')){
+		return true;
+	}
+	return false;
+};
+
+(function testsOfStrIsNonEmptyStr(){
+	console.log(str.isNonEmptyStr());//false
+	console.log(str.isNonEmptyStr(''));//false
+	console.log(str.isNonEmptyStr('a'));//true
+	console.log(str.isNonEmptyStr(1));//false
+	console.log(str());//alert('String is empty')
+	console.log(str('a'));//alert('String is non empty')
+})();
