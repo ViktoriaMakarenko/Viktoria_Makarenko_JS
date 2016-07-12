@@ -1,4 +1,4 @@
-//first task
+//1 task
 
 console.log(conc(1,1));
 
@@ -24,7 +24,7 @@ function conc(){
 	
 }
 
-//second task
+//2 task
 
 try {
 	console.log(comp(1,1));
@@ -57,7 +57,7 @@ function testsOfcomp(){
 
 //testsOfcomp();
 
-//third task
+//3 task
 
 document.write('<button id=\'showMessage\'>Log message to console!</button>');
 
@@ -65,7 +65,7 @@ document.getElementById('showMessage').onclick = function() {
     console.log('message in console');
 }
 	
-//fourth task
+//4 task
 
 var functionFibo = function fibo(n){
 	if (n > 0){
@@ -86,7 +86,7 @@ var n = prompt('Please, enter the count of Fibonacci numbers, that you would lik
 
 console.log(functionFibo(n));
 
-//fives task
+//5 task
 
 console.log((function conc(){
 	if (arguments.length > 0){
@@ -101,7 +101,7 @@ console.log((function conc(){
 	}
 })(4,7));
 
-//six task
+//6 task
 
 var getSubstringFromParameters = function(){
 	if (arguments.length > 0){
@@ -125,7 +125,7 @@ var getSubstringFromParameters = function(){
 
 console.log(getSubstringFromParameters('This is the first sentence. This is a sentence with a list of items: cherries, oranges, apples, bananas.','This is the second sentence. This is a sentence with a list of items: red, blue, yellow, black.'));
 
-//seven task
+//7 task
 
 var getIndexOfSubstring = function(){
 	if (arguments.length > 0){
@@ -146,7 +146,7 @@ function testsOfGetIndexOfSubstring(){
  
 testsOfGetIndexOfSubstring();
 
-//eight task
+//8 task
 
 str = function(){
 	if (str.isNonEmptyStr(arguments[0]) === true){
@@ -154,6 +154,7 @@ str = function(){
 	} else {
 		alert('String is empty');
 	}
+	return null;
 }
 
 str.isNonEmptyStr = function (){
@@ -171,3 +172,61 @@ str.isNonEmptyStr = function (){
 	console.log(str());//alert('String is empty')
 	console.log(str('a'));//alert('String is non empty')
 })();
+
+//9 task
+
+var toConsole = function (a){
+	console.log(a);
+}
+
+var toAlert = function (a){
+	alert(a);
+}
+
+function splitToWords(msg, callback){
+	var msgSplit = msg.split(' '),
+		i = 0;
+	if (callback){
+		while (i < msgSplit.length){
+			if (callback === toConsole){
+				toConsole(msgSplit[i]);
+			}
+			if (callback === toAlert){
+				toAlert(msgSplit[i]);
+			}
+			i++;
+		}
+		return null;
+	} else {
+		return msgSplit;
+	}
+}
+(function testsOfSplitToWords(){
+	splitToWords('My very long text msg', toConsole);
+	splitToWords('My very long text msg', toAlert);
+	toConsole(splitToWords('My very long text msg'));
+
+})();
+
+//10 task
+
+function copyrightSign(a){
+	return a = '\u00A9' + a;
+}
+
+function copyright(){
+	return copyrightSign;
+}
+
+console.log( copyright()("EPAM") );
+
+//11 task
+
+var Employee = {
+	name: 	'Ann',
+	work: 	function(){
+				toConsole('I am ' + this.name + '. I am working...');
+			}
+};
+
+Employee.work();
