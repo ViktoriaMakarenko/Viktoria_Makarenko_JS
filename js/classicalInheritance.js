@@ -1,13 +1,24 @@
 'use strict';
-
 function Person (firstname, lastname, age){
-	if (this.nameValidate(firstname) && (this.nameValidate(lastname)) && (this.ageValidate(age))){
+	if (this.nameValidate(firstname) && (this.nameValidate(lastname)) ){
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.age = Number(age);
+		this.age = age;
+		this.age_ = this.age;
 	};
 }
-  
+
+Object.defineProperty(Person.prototype, 'age', {
+	get: function() { return this.age_; },
+	set: function(newValue) { 
+		if (isNaN(Number(newValue))){
+			throw new Error('Incorrect age: ' + '\'' + newValue + '\'' + '. It must be a number.');
+		} else {
+			this.age_ = Number(newValue);
+		}
+	}
+});
+
 Object.defineProperty(Person.prototype, 'fullname', {
 			get: function() { return this.firstname + ' ' + this.lastname; },
 			set: function(newValue) {
@@ -29,14 +40,6 @@ Person.prototype.introduce = function(){
 Person.prototype.nameValidate = function(name) {
 	if ((typeof name !== 'string') || !(/^[A-Za-z]{3,20}$/.test(name))){
 		throw new Error('Incorrect data: ' + name + '. firstname and lastname must contain from 3 to 20 Latin letters.');
-		return false;
-	}
-	return true;
-}
-
-Person.prototype.ageValidate = function(age) {
-	if (isNaN(Number(age))){
-		throw new Error('Incorrect data: ' + '\'' + age + '\'' + '. Age must be a number.');
 		return false;
 	}
 	return true;
