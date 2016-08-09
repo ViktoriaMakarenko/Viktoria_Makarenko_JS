@@ -44,9 +44,12 @@ printInputTextToConsole();
 Crеate a function that gets the value of <input type="color"> and sets the background of the body to this value*/
 
 function setBackgroundOfTheBody(){
-	var colorInputs = document.querySelector("input[type='color']");
-	if (colorInputs){
-		document.body.style.background = colorInputs.value;
+	var colorInput = document.querySelector("input[type='color']");
+	if (colorInput && colorInput.value){
+		document.body.style.background = colorInput.value;
+		colorInput.oninput = function(){
+			document.body.style.background = colorInput.value;
+		}
 	} else {
 		console.log('There are no <input type="color">.');
 	}
