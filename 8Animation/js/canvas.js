@@ -1,14 +1,5 @@
 'use strict';
 
-
-//man in a hat
-var canvas = document.getElementById('man');
-var ctx = canvas.getContext('2d');
-
-ctx.strokeStyle = '#22545f'; 
-ctx.fillStyle = '#90cad7';
-
-
 CanvasRenderingContext2D.prototype.ellipse = function (x, y, a, b) {
 	this.save();
 	this.beginPath();
@@ -18,6 +9,13 @@ CanvasRenderingContext2D.prototype.ellipse = function (x, y, a, b) {
 	this.restore();
 	this.closePath();
 }
+
+//man in a hat
+var canvas = document.getElementById('man');
+var ctx = canvas.getContext('2d');
+
+ctx.strokeStyle = '#22545f'; 
+ctx.fillStyle = '#90cad7';
 
 ctx.lineWidth = 4;
 
@@ -35,23 +33,23 @@ ctx.translate(-110, -305);
 
 var x = 65;
 for (var i = 1; i <= 2; i++){
-	ctx.ellipse(x, 220, 18, 12);
+	ctx.ellipse(x, 215, 19, 12);
 	ctx.fill();
 	ctx.stroke();
 	x += 90;
 }
 
 ctx.fillStyle = '#22545f';
-ctx.ellipse(58, 221, 5.5, 9);
+ctx.ellipse(58, 216, 5.5, 9);
 ctx.fill();
-ctx.ellipse(147, 220, 3.5, 7);
+ctx.ellipse(147, 215, 3.5, 7);
 ctx.fill();
 
 ctx.moveTo(110, 217);
-ctx.lineTo(88, 267);
+ctx.lineTo(85, 267);
 ctx.stroke();
 
-ctx.moveTo(89, 267);
+ctx.moveTo(86, 267);
 ctx.lineTo(110, 267);
 ctx.stroke();
 
@@ -119,3 +117,91 @@ cont.beginPath();
 cont.arc(255, 239, 25, 0, Math.PI * 2);
 cont.closePath();
 cont.stroke();
+
+//house
+
+var cvs = document.getElementById('house');
+var con = cvs.getContext('2d');
+
+con.strokeStyle = 'black'; 
+con.fillStyle = '#975b5b';
+
+con.lineWidth = 4;
+
+con.beginPath();
+con.moveTo(2,250);
+con.lineTo(229,2);
+con.lineTo(452,250);
+con.fill();
+con.stroke();
+
+con.fillRect(2, 250, 450, 337);
+con.strokeRect(2, 250, 450, 337);
+
+con.beginPath();
+con.moveTo(315,190);
+con.lineTo(315,65);
+con.lineTo(365,65);
+con.lineTo(365,190);
+con.fill();
+con.stroke();
+con.ellipse(340, 65, 25, 6);
+con.fill();
+con.stroke();
+
+con.fillStyle = 'black';
+
+var x = 35;
+var y = 291;
+for (var i = 1; i <= 4; i++){
+	con.fillRect(x, y, 80, 50);
+	x += 84;
+	if (i == 2){
+		y += 54;
+		x = 35;
+	}
+}
+
+x = 255;
+y = 291;
+for (var i = 1; i <= 4; i++){
+	con.fillRect(x, y, 80, 50);
+	x += 84;
+	if (i == 2){
+		y += 54;
+		x = 255;
+	}
+}
+
+
+x = 255;
+y = 435;
+for (var i = 1; i <= 4; i++){
+	con.fillRect(x, y, 80, 50);
+	x += 84;
+	if (i == 2){
+		y += 54;
+		x = 255;
+	}
+}
+con.moveTo(50,475);
+con.bezierCurveTo(55, 448, 95, 440, 115, 440);
+con.bezierCurveTo(135, 440, 170, 448, 175, 475);
+con.moveTo(50,474);
+con.lineTo(50,589);
+con.moveTo(175,474);
+con.lineTo(175,589);
+con.moveTo(115,440);
+con.lineTo(115,589);
+con.stroke();
+
+var x = 95;
+for (var i = 1; i <= 2; i++){
+	con.beginPath();
+	con.arc(x, 544, 6, 0, Math.PI * 2);
+	con.stroke();
+	x += 40;
+	con.closePath();
+	con.moveTo(x, 544);
+
+}
