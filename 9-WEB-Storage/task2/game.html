@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Number guessing game</title>
+	<link type="text/css" rel="stylesheet" href="css.css"/>
+</head>
+<body>
+	<button onclick="startGame()">Start</button>
+	<div class="game_content">
+		<label for="user_number">Enter you variant of the number</label>
+		<input id="user_number" type="text"/>
+		<button id="check" onclick="check()">Check</button>
+	</div>
+	<div class="error">
+		<p class="error_length">A number must have only 4 digits.</p>
+		<p class="error_first_digit">First digit must not be zero.</p>
+		<p class="error_digit">Input data must be 4 digits.</p>
+		<p class="error_repeating_digits">Digits must not be repeated.</p>
+	</div>
+	<div class="iterations">
+		<h2>Previous iterations</h2>
+		<div></div>
+	</div>
+	<div class="high_score">
+		<h1>High Score 
+			<button onclick="clearStorage()">Clear history</button>
+		</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>№</th>
+					<th>Nick name</th>
+					<th>Iterations</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+	
+	<script src="game.js"></script>
+</body>
+</html>
