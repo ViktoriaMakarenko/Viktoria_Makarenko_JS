@@ -1,0 +1,9 @@
+.game_content, .error p{
+	display: none;
+}
+.error{
+	color: red;
+}
+.noLink {
+  pointer-events: none;
+}
